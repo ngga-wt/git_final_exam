@@ -1,0 +1,70 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  jobA:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello
+        
+      - name: print ubuntu version
+        run: echo "ubuntu version=$RUNNER_OS"
+        
+      - name: print git sha commit
+        run: echo "SHA COMMIT=$GITHUB_SHA"
+        
+  jobB:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Print content of all files in the repo
+      - name: Run a one-line script
+        run: cat {1..4}.txt README.md
+
+      - name: Make script executable and run script
+        run: chmod +x ./test.sh && ./test.sh
+  jobC:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    env:
+      firstName: doe
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      - name: Print first name from env
+        run: echo "My first name is=$firstName And My last name is=$lastName"
+        env:
+          lastName: jhon
+
+      - name: Print phone number using secretes
+        run: echo "My secret phone number is=${{ secrets.PHONE_NUMBER }}
