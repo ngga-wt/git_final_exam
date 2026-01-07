@@ -24,13 +24,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
+      
+      - name: Print hello
         run: echo Hello
         
       - name: print ubuntu version
-        run: echo "ubuntu version=$RUNNER_OS"
+        run: cat /etc/os-release
         
       - name: print git sha commit
         run: echo "SHA COMMIT=$GITHUB_SHA"
@@ -44,8 +43,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Print content of all files in the repo
-      - name: Run a one-line script
+      - name: Print content of all files in the repo
         run: cat {1..4}.txt README.md
 
       - name: Make script executable and run script
@@ -54,7 +52,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
-      firstName: doe
+      firstName: jhon
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -64,7 +62,7 @@ jobs:
       - name: Print first name from env
         run: echo "My first name is=$firstName And My last name is=$lastName"
         env:
-          lastName: jhon
+          lastName: doe
 
       - name: Print phone number using secretes
         run: echo "My secret phone number is=${{ secrets.PHONE_NUMBER }}"
