@@ -46,7 +46,7 @@ jobs:
       - name: Print content of all files in the repo
         run: cat {1..4}.txt README.md
 
-      - name: Make script executable and run script
+      - name: Make test.sh executable and run script to print content of 1.txt and 2.txt
         run: chmod +x ./test.sh && ./test.sh
   jobC:
     # The type of runner that the job will run on
