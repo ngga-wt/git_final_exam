@@ -59,7 +59,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - name: Print first name from env
+      - name: Print first name and last name from differnts env stages
         run: echo "My first name is=$firstName And My last name is=$lastName"
         env:
           lastName: doe
