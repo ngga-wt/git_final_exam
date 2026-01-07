@@ -67,4 +67,4 @@ jobs:
           lastName: jhon
 
       - name: Print phone number using secretes
-        run: echo "My secret phone number is=${{ secrets.PHONE_NUMBER }}
+        run: echo "My secret phone number is=${{ secrets.PHONE_NUMBER }}"
